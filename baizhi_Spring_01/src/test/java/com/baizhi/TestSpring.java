@@ -17,5 +17,6 @@ public class TestSpring {
         //2 通过工厂类获取对象
         Person person = (Person) context.getBean("person");
         System.out.println("person = " + person);
+        
     }
 }

@@ -6,7 +6,6 @@
 <!--    id 属性 名字 唯一-->
 <!--  class属性 配置全限定名   -->
 <!--    <bean id="person" class="com.baizhi.basic.Person"/>-->
-
 <!--    <bean id="person1" class="com.baizhi.basic.Person"/>-->
 
     <bean id="person" name="p,p1" class="com.baizhi.basic.Person">
@@ -15,6 +14,48 @@
         </property>
         <property name="name">
             <value>suns</value>
+        </property>
+        <property name="emails">
+            <list>
+                <value>suns@zp.com</value>
+                <value>lincu@zp.com</value>
+                <value>zhangsi@zp.com</value>
+            </list>
+        </property>
+        <property name="tels">
+            <set>
+                <value>1239188123</value>
+                <value>123813121</value>
+                <value>130111111</value>
+                <value>130111111</value>
+            </set>
+        </property>
+        <property name="address">
+            <list>
+                <value>zpark</value>
+                <value>shangdi</value>
+                <value>xierq</value>
+                <value>xierq</value>
+                <value>xierq</value>
+            </list>
+        </property>
+        <property name="qqs">
+            <map>
+                <entry>
+                    <key><value>suns</value></key>
+                    <value>4231324113</value>
+                </entry>
+                <entry>
+                    <key><value>chenvn</value></key>
+                    <value>7237163127</value>
+                </entry>
+            </map>
+        </property>
+        <property name="p">
+            <props>
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+            </props>
         </property>
     </bean>
 </beans>

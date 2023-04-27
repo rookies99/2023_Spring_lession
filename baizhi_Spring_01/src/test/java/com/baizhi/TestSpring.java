@@ -5,6 +5,11 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 public class TestSpring {
 
     /**
@@ -95,5 +100,39 @@ public class TestSpring {
         ApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
         Person person = (Person) context.getBean("person");
         System.out.println("person = " + person);
+    }
+
+    /**
+     * 用于测试JDK类型成员变量的赋值
+     */
+    @Test
+
+    public void test9() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Person person = (Person) context.getBean("person");
+        String[] email = person.getEmails();
+        for (String s : email) {
+            System.out.println(s);
+        }
+        System.out.println("----------------------------");
+        Set<String> tels = person.getTels();
+        for (String tel : tels) {
+            System.out.println("tel = " + tel);
+        }
+        System.out.println("---------------------------");
+        List<String> addresses = person.getAddress();
+        for (String address : addresses) {
+            System.out.println("address = " + address);
+        }
+        System.out.println("---------------------------");
+        Map<String, String> qqs = person.getQqs();
+        for (Map.Entry<String, String> entry : qqs.entrySet()) {
+            System.out.println("key = " + entry.getKey());
+            System.out.println("value = " + entry.getValue());
+        }
+        System.out.println("---------------------------");
+        Properties p = person.getP();
+        System.out.println("key1 +value is  = " + p.getProperty("key1"));
+        System.out.println("key2 +value is  = " + p.getProperty("key2"));
     }
 }

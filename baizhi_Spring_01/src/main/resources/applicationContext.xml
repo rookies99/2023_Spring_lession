@@ -5,5 +5,16 @@
 
 <!--    id 属性 名字 唯一-->
 <!--  class属性 配置全限定名   -->
-    <bean id="person" class="com.baizhi.basic.Person"/>
+<!--    <bean id="person" class="com.baizhi.basic.Person"/>-->
+
+<!--    <bean id="person1" class="com.baizhi.basic.Person"/>-->
+
+    <bean id="person" name="p,p1" class="com.baizhi.basic.Person">
+        <property name="id">
+            <value>10</value>
+        </property>
+        <property name="name">
+            <value>suns</value>
+        </property>
+    </bean>
 </beans>

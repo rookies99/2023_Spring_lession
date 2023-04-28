@@ -1,6 +1,6 @@
 package com.baizhi;
 
-import com.baizhi.basic.Person;
+import com.baizhi.basic.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,6 +11,20 @@ import java.util.Properties;
 import java.util.Set;
 
 public class TestSpring {
+    /**
+     * 用于测试工厂类进行解耦合的操作
+     */
+    @Test
+    public void test1(){
+//        UserService userService = new UserServiceImpl();
+        UserService userService = BeanFactory.getUserService();
+
+        userService.login("name", "suns");
+
+        User user = new User("suns", "123456");
+        userService.register(user);
+    }
+
 
     /**
      * 用于测试:Spring的第一个程序

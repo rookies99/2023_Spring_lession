@@ -58,4 +58,9 @@
             </props>
         </property>
     </bean>
+    <bean id="userService" class="com.baizhi.basic.UserServiceImpl">
+        <property name="userDao" >
+            <bean class="com.baizhi.basic.UserDaoImpl"></bean>
+        </property>
+    </bean>
 </beans>

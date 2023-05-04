@@ -26,7 +26,7 @@ public class BeanFactory {
 
      */
 
-    public static UserService getUserService() {
+    /*public static UserService getUserService() {
         UserService userService = null;
         try {
             Class<?> clazz = Class.forName(env.getProperty("userService"));
@@ -56,7 +56,7 @@ public class BeanFactory {
         }
 
         return userDao;
-    }
+    }*/
 
     /*
     key 小配置文件中的key [userDao,userService]

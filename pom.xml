@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>baizhi_Spring_01</module>
+        <module>baizhi_Spring_02</module>
     </modules>
 
     <properties>

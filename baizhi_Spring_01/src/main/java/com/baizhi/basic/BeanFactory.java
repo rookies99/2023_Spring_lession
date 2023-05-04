@@ -21,7 +21,7 @@ public class BeanFactory {
         对象的创建方式
             1.直接调用构造方法 创建对象 UserService userService = new UserServiceImpl();
             2. 通过反射的形式创建对象 解耦合
-                Class clazz = Class.forName("com.baizhi.basic.UserServiceImpl");
+                Class<?> clazz = Class.forName("com.baizhi.basic.UserServiceImpl");
                 userService = (UserService) clazz.newInstance();
 
      */
@@ -56,5 +56,23 @@ public class BeanFactory {
         }
 
         return userDao;
+    }
+
+    /*
+    key 小配置文件中的key [userDao,userService]
+     */
+    public static Object getBean(String key){
+        Object ret = null;
+        try {
+            Class clazz = Class.forName(env.getProperty(key));
+            ret = clazz.newInstance();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
 }

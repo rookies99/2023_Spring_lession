@@ -11,8 +11,7 @@ public class Before implements MethodBeforeAdvice {
      */
     @Override
     public void before(Method method, Object[] objects, Object o) throws Throwable {
-        System.out.println("-------method before advice log-------");
-
+        System.out.println("执行方法："+method+"，"+method.getName());
     }
 
 }

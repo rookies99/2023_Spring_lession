@@ -30,12 +30,4 @@ public class TestProxy {
         userService.login("suns", "123456");
         userService.register(new User());
     }
-
-    /**
-     * 用于测试具体的AOP示例
-     */
-    @Test
-    public void test3(){
-        
-    }
 }

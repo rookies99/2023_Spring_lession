@@ -14,4 +14,9 @@ public class UserServiceProxy implements UserService {
 
         return userService.login(name,password);
     }
+
+    @Override
+    public void doSomething() {
+        userService.doSomething();
+    }
 }

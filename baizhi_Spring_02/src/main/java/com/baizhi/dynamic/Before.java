@@ -1,5 +1,6 @@
 package com.baizhi.dynamic;
 
+import org.aopalliance.intercept.Joinpoint;
 import org.springframework.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
@@ -13,4 +14,5 @@ public class Before implements MethodBeforeAdvice {
         System.out.println("-------method before advice log-------");
 
     }
+
 }

@@ -11,4 +11,13 @@ public class UserServiceImpl implements UserService{
         System.out.println("UserServiceImpl.login");
         return true;
     }
+
+    @Override
+    public void doSomething() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -11,4 +11,14 @@
         <!-- 组装:目的 把切入点 与 额外功能 进行整合-->
         <aop:advisor advice-ref="before" pointcut-ref="pc"/>
     </aop:config>
+
+    <!--性能监控 配置-->
+    <bean id="performanceMonitor" class="com.baizhi.dynamic.PerformanceMonitor"/>
+
+    <aop:config>
+        <aop:aspect ref="performanceMonitor">
+            <aop:pointcut id="serviceMethods" expression="execution(* com.baizhi.proxy.*.*(..))"/>
+            <aop:around method="monitor" pointcut-ref="serviceMethods"/>
+        </aop:aspect>
+    </aop:config>
 </beans>

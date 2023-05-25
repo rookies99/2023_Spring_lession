@@ -12,6 +12,7 @@
         <module>baizhi_Spring_01</module>
         <module>baizhi_Spring_02</module>
         <module>baizhi_Spring_03</module>
+        <module>baizhi_Spring_Web</module>
     </modules>
 
     <properties>

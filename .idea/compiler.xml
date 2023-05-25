@@ -7,9 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="baizhi_Spring_01" />
+        <module name="baizhi_Spring_Web" />
         <module name="baizhi_Spring_03" />
         <module name="baizhi_Spring_02" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="baizhi_spring_web" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,10 +1,13 @@
 package com.baizhi;
 
 import com.baizhi.basic.*;
+import com.baizhi.basic.constructer.Customer;
+import com.baizhi.factorybean.ConnectionFactoryBean;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -159,5 +162,37 @@ public class TestSpring {
         UserService userService = (UserService) ctx.getBean("userService");
         userService.register(new User("suns", "123456"));
         userService.login("xiaohei","123456");
+    }
+
+    /**
+     * 用于测试构造注入
+     */
+    @Test
+    public void test11() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Customer customer = (Customer) ctx.getBean("customer");
+        System.out.println("customer = " + customer);
+    }
+
+    /**
+     * 用于测试FactoryBean接口
+     */
+    @Test
+    public void test12() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Connection connection = (Connection) ctx.getBean("conn");
+        Connection conn2 = (Connection) ctx.getBean("conn");
+        System.out.println("connection = " + connection);
+        System.out.println("conn2 = " + conn2);
+    }
+
+    /**
+     * 用于测试FactoryBean接口
+     */
+    @Test
+    public void test13() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ConnectionFactoryBean conn = (ConnectionFactoryBean) ctx.getBean("&conn");
+        System.out.println("conn = " + conn);
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!--    id 属性 名字 唯一-->
@@ -8,55 +8,79 @@
 <!--    <bean id="person" class="com.baizhi.basic.Person"/>-->
 <!--    <bean id="person1" class="com.baizhi.basic.Person"/>-->
 
-    <bean id="person" name="p,p1" class="com.baizhi.basic.Person">
-        <property name="id" value="10"/>
-        <property name="name" value="suns"/>
-        <property name="emails">
-            <list>
-                <value>suns@zp.com</value>
-                <value>lincu@zp.com</value>
-                <value>zhangsi@zp.com</value>
-            </list>
-        </property>
-        <property name="tels">
-            <set>
-                <value>1239188123</value>
-                <value>123813121</value>
-                <value>130111111</value>
-                <value>130111111</value>
-            </set>
-        </property>
-        <property name="address">
-            <list>
-                <value>zpark</value>
-                <value>shangdi</value>
-                <value>xierq</value>
-                <value>xierq</value>
-                <value>xierq</value>
-            </list>
-        </property>
-        <property name="qqs">
-            <map>
-                <entry key="suns">
-                    <value>4231324113</value>
-                </entry>
-                <entry>
-                    <key><value>chenvn</value></key>
-                    <value>7237163127</value>
-                </entry>
-            </map>
-        </property>
-        <property name="p">
-            <props>
-                <prop key="key1">value1</prop>
-                <prop key="key2">value2</prop>
-            </props>
-        </property>
-    </bean>
+<!--    <bean id="person" name="p,p1" class="com.baizhi.basic.Person">-->
+<!--        <property name="id" value="10"/>-->
+<!--        <property name="name" value="suns"/>-->
+<!--        <property name="emails">-->
+<!--            <list>-->
+<!--                <value>suns@zp.com</value>-->
+<!--                <value>lincu@zp.com</value>-->
+<!--                <value>zhangsi@zp.com</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="tels">-->
+<!--            <set>-->
+<!--                <value>1239188123</value>-->
+<!--                <value>123813121</value>-->
+<!--                <value>130111111</value>-->
+<!--                <value>130111111</value>-->
+<!--            </set>-->
+<!--        </property>-->
+<!--        <property name="address">-->
+<!--            <list>-->
+<!--                <value>zpark</value>-->
+<!--                <value>shangdi</value>-->
+<!--                <value>xierq</value>-->
+<!--                <value>xierq</value>-->
+<!--                <value>xierq</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="qqs">-->
+<!--            <map>-->
+<!--                <entry key="suns">-->
+<!--                    <value>4231324113</value>-->
+<!--                </entry>-->
+<!--                <entry>-->
+<!--                    <key><value>chenvn</value></key>-->
+<!--                    <value>7237163127</value>-->
+<!--                </entry>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--        <property name="p">-->
+<!--            <props>-->
+<!--                <prop key="key1">value1</prop>-->
+<!--                <prop key="key2">value2</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
     <!-- 第一种 赋值方式-->
-    <bean id="userService" class="com.baizhi.basic.UserServiceImpl">
-        <property name="userDao">
-            <bean class="com.baizhi.basic.UserDaoImpl"></bean>
-        </property>
+<!--    <bean id="userService" class="com.baizhi.basic.UserServiceImpl">-->
+<!--        <property name="userDao">-->
+<!--            <bean class="com.baizhi.basic.UserDaoImpl"></bean>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!-- 第二种 赋值方式  先创建需要的dao对象-->
+    <bean id="userDAO" class="com.baizhi.basic.UserDaoImpl"/>
+<!--    <bean id="userService" class="com.baizhi.basic.UserServiceImpl">-->
+<!--        <property name="userDao" ref="userDAO"/>-->
+<!--    </bean>-->
+
+    <!-- p: 简化写法-->
+    <bean id="person" class="com.baizhi.basic.Person" p:name="xiaojr" p:id="100"/>
+
+    <bean id="userService" class="com.baizhi.basic.UserServiceImpl" p:userDao-ref="userDAO" />
+
+    <!-- 构造注入 -->
+    <bean id="customer" class="com.baizhi.basic.constructer.Customer">
+        <constructor-arg  type="int" value="12"/>
+    </bean>
+
+    <!-- 获取复杂对象-->
+    <bean id="conn" class="com.baizhi.factorybean.ConnectionFactoryBean">
+        <property name="driveClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/myschool?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
     </bean>
 </beans>

@@ -1,5 +1,8 @@
 package com.baizhi.proxy;
 
+import com.baizhi.proxy.a.UserService;
+import com.baizhi.proxy.a.UserServiceImpl;
+
 public class UserServiceProxy implements UserService {
     private UserServiceImpl userService = new UserServiceImpl();
     @Override

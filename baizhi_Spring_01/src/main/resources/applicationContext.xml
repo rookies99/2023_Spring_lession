@@ -76,11 +76,26 @@
         <constructor-arg  type="int" value="12"/>
     </bean>
 
-    <!-- 获取复杂对象-->
-    <bean id="conn" class="com.baizhi.factorybean.ConnectionFactoryBean">
+    <!-- 1.获取复杂对象 通过实现FactoryBean接口的方式-->
+    <!--<bean id="conn" class="com.baizhi.factorybean.ConnectionFactoryBean">
         <property name="driveClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/myschool?useSSL=false"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/myschool?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
         <property name="username" value="root"/>
         <property name="password" value="123456"/>
+    </bean>-->
+    <!-- 2.获取复杂对象 通过实例工厂-->
+<!--    <bean id="connFactory" class="com.baizhi.factorybean.ConnectionFactory"/>-->
+<!--    <bean id="conn" factory-bean="connFactory" factory-method="getConnection"/>-->
+
+    <!--3. 获取复杂对象 通过静态工厂-->
+    <bean id="conn" class="com.baizhi.factorybean.StaticConnectionFactory" factory-method="getConnection"></bean>
+
+    <!-- 通过scope控制简单对象的创建次数  -->
+    <bean id="account" scope="prototype" class="com.baizhi.scope.Account"></bean>
+
+
+    <bean id="product" scope="prototype" init-method="myInit" destroy-method="myDestroy" class="com.baizhi.life.Product">
+        <property name="name" value="suns"/>
     </bean>
+
 </beans>

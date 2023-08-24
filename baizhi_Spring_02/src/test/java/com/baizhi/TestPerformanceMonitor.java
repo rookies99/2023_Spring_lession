@@ -2,7 +2,7 @@ package com.baizhi;
 
 
 import com.baizhi.proxy.User;
-import com.baizhi.proxy.UserService;
+import com.baizhi.proxy.a.UserService;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

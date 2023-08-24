@@ -1,7 +1,6 @@
 package com.baizhi.dynamic;
 
-import com.baizhi.proxy.UserService;
-import com.baizhi.proxy.UserServiceImpl;
+import com.baizhi.proxy.a.UserService;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

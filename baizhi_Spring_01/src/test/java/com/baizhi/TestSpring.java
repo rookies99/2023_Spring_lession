@@ -2,7 +2,11 @@ package com.baizhi;
 
 import com.baizhi.basic.*;
 import com.baizhi.basic.constructer.Customer;
+import com.baizhi.beanpost.Categroy;
+import com.baizhi.factorybean.ConnectionFactory;
 import com.baizhi.factorybean.ConnectionFactoryBean;
+import com.baizhi.life.Product;
+import com.baizhi.scope.Account;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -187,7 +191,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试FactoryBean接口
+     * 用于测试FactoryBean接口 &符号只获取ConnectionFactoryBean对象
      */
     @Test
     public void test13() {
@@ -195,4 +199,77 @@ public class TestSpring {
         ConnectionFactoryBean conn = (ConnectionFactoryBean) ctx.getBean("&conn");
         System.out.println("conn = " + conn);
     }
+
+    /**
+     * 用于测试实例工厂
+     */
+    @Test
+    public void test14(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Connection conn = (Connection) ctx.getBean("conn");
+        System.out.println("conn = " + conn);
+    }
+
+    /**
+     * 用于测试静态工厂
+     */
+    @Test
+    public void test15(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Connection conn = (Connection) ctx.getBean("conn");
+        System.out.println("conn = " + conn);
+    }
+
+    /**
+     * 用于测试简单对象的创建次数
+     */
+    @Test
+    public void test16(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Account account1 = (Account) ctx.getBean("account");
+        Account account2 = (Account) ctx.getBean("account");
+        System.out.println("account1 = " + account1);
+        System.out.println("account2 = " + account2);
+    }
+
+    /**
+     * 用于测试生命周期
+     */
+    @Test
+    public void test17() {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Product product = (Product) ctx.getBean("product");
+        ctx.close();
+    }
+
+    /**
+     * 用于测试静态工厂
+     */
+    @Test
+    public void test18(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext1.xml");
+        Connection conn = (Connection) ctx.getBean("conn");
+        System.out.println("conn = " + conn);
+    }
+
+    /**
+     * 用于测试自定义类型转换器
+     */
+    @Test
+    public void test19(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext2.xml");
+        com.baizhi.converter.Person person = (com.baizhi.converter.Person) ctx.getBean("person");
+        System.out.println("person = " + person);
+    }
+
+    /**
+     * 用于测试BeanPostProcessor
+     */
+    @Test
+    public void test20(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext3.xml");
+        Categroy c = (Categroy) ctx.getBean("c");
+        System.out.println("c.getName() = " + c.getName());;
+    }
+
 }

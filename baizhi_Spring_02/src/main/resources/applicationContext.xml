@@ -3,13 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="userService" class="com.baizhi.proxy.UserServiceImpl"></bean>
-    <bean id="before" class="com.baizhi.dynamic.Before"></bean>
+    <bean id="userService" class="com.baizhi.proxy.a.UserServiceImpl"></bean>
+    <bean id="orderService" class="com.baizhi.proxy.OrderServiceImpl"></bean>
+<!--    <bean id="before" class="com.baizhi.dynamic.Before"></bean>-->
+<!--    <bean id="before" class="com.baizhi.dynamic.Before1"></bean>-->
+
+    <bean id="arround" class="com.baizhi.dynamic.Arround"></bean>
     <aop:config>
-        <!-- 所有的方法 都作为切入点，加入额外功能 login register-->
-        <aop:pointcut id="pc" expression="execution(* *(..))"/>
-        <!-- 组装:目的 把切入点 与 额外功能 进行整合-->
-        <aop:advisor advice-ref="before" pointcut-ref="pc"/>
+        <!-- 切入点  expression：切入点表达式  所有的方法都作为切入点，加入额外功能-->
+        <aop:pointcut id="pc" expression="execution(* login(..)) and args(String,String)"/>
+        <!-- 组装：目的是把切入点与额外功能进行 整合-->
+        <aop:advisor advice-ref="arround" pointcut-ref="pc"/>
     </aop:config>
 
     <!--性能监控 配置-->

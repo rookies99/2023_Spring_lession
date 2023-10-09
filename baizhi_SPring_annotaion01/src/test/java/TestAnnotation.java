@@ -72,5 +72,17 @@ public class TestAnnotation {
         System.out.println("category.getName() = " + category.getName());
         System.out.println("category.getId() = " + category.getId());
     }
+    
+    /*
+        用于测试排除策略
+     */
+    @Test
+    public void test7() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        String[] beanDefinitionNames = (String[]) ctx.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            System.out.println("beanDefinitionName = " + beanDefinitionName);
+        }
+    }
 
 }

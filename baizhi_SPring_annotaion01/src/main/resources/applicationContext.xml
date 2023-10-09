@@ -4,7 +4,18 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.baizhi"/>
+<!--    <context:component-scan base-package="com.baizhi">-->
+<!--        <context:exclude-filter type="assignable" expression="com.baizhi.bean.User"/>-->
+<!--&lt;!&ndash;        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>&ndash;&gt;-->
+<!--        <context:exclude-filter type="aspectj" expression="com.baizhi.injection..*"/>-->
+<!--        <context:exclude-filter type="aspectj" expression="*..User"/>-->
+<!--    </context:component-scan>-->
+    
+    <context:component-scan base-package="com.baizhi" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+
     <bean id="user" class="com.baizhi.bean.User">
         <property name="id" value="10"/>
     </bean>

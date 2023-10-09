@@ -8,4 +8,5 @@
     <bean id="user" class="com.baizhi.bean.User">
         <property name="id" value="10"/>
     </bean>
+<!--    <context:property-placeholder location="classpath:init.properties"/>-->
 </beans>

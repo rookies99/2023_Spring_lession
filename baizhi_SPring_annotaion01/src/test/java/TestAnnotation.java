@@ -1,4 +1,5 @@
 import com.baizhi.bean.User;
+import com.baizhi.injection.Category;
 import com.baizhi.injection.UserService;
 import com.baizhi.lazy.Account;
 import com.baizhi.life.Product;
@@ -60,4 +61,16 @@ public class TestAnnotation {
         UserService userServiceImpl = (UserService) ctx.getBean("userServiceImpl");
         userServiceImpl.register();
     }
+
+    /*
+        用于测试@Value注解
+     */
+    @Test
+    public void test6() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Category category = (Category) ctx.getBean("category");
+        System.out.println("category.getName() = " + category.getName());
+        System.out.println("category.getId() = " + category.getId());
+    }
+
 }

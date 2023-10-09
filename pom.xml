@@ -14,6 +14,7 @@
         <module>baizhi_Spring_03</module>
         <module>baizhi_Spring_Web</module>
         <module>baizhi_SPring_annotaion01</module>
+        <module>baizhi_Spring_annotaion02</module>
     </modules>
 
     <properties>

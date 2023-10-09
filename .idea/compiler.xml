@@ -11,6 +11,7 @@
         <module name="baizhi_Spring_Web" />
         <module name="baizhi_Spring_03" />
         <module name="baizhi_Spring_02" />
+        <module name="baizhi_Spring_annotaion02" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

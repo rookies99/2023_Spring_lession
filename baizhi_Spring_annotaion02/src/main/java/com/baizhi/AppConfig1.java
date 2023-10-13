@@ -35,8 +35,8 @@ public class AppConfig1 {
     @Bean
     public Customer customer(){
         Customer customer = new Customer();
-        customer.setId(1);
-        customer.setName("xiaohei");
+        customer.setId(id);
+        customer.setName(name);
         return customer;
     }
 }

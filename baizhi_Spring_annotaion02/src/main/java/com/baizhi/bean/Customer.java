@@ -1,7 +1,10 @@
 package com.baizhi.bean;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
+@Component
 public class Customer implements Serializable {
     private Integer id;
     private String name;

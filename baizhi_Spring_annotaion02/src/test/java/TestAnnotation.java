@@ -1,11 +1,12 @@
-import com.baizhi.AppConfig;
-import com.baizhi.AppConfig1;
+import com.baizhi.*;
 import com.baizhi.bean.Customer;
 import com.baizhi.bean.User;
+import com.baizhi.injection.UserDao;
 import com.baizhi.injection.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Connection;
 
@@ -64,8 +65,43 @@ public class TestAnnotation {
     public void test5() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
         Customer customer = (Customer) ctx.getBean("customer");
-        System.out.println("customer.getName() = " + customer.getName());
         System.out.println("customer.getId() = " + customer.getId());
+        System.out.println("customer.getName() = " + customer.getName());
+    }
+
+    /**
+     * 用于测试@ComponentScan 基本使用
+     */
+    @Test
+    public void test6() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig2.class);
+        String[] beanDefinitionNames = (String[]) ctx.getBeanDefinitionNames();
+        for (int i = 0; i < beanDefinitionNames.length; i++) {
+            String beanDefinitionName = beanDefinitionNames[i];
+            System.out.println("beanDefinitionName = " + beanDefinitionName);
+        }
+    }
+
+    /**
+     * 用于测试配置的覆盖
+     */
+    @Test
+    public void test7() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig3.class);
+        Customer customer = (Customer) ctx.getBean("customer");
+        System.out.println("customer.getId() = " + customer.getId());
+        System.out.println("customer.getName() = " + customer.getName());
+    }
+    
+    /**
+     * 用于测试:解耦合
+     */
+    @Test
+    public void test8() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class,AppConfig5.class);
+        ApplicationContext ctx1 = new AnnotationConfigApplicationContext("com.baizhi");
+        UserDao userDao = (UserDao) ctx.getBean("userDAO");
+        userDao.save();
     }
 
 }

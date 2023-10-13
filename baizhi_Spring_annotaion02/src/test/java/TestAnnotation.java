@@ -104,4 +104,28 @@ public class TestAnnotation {
         userDao.save();
     }
 
+    /**
+     * 用于测试:多配置Bean的整合
+     */
+    @Test
+    public void test9() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext("com.baizhi.config");
+        UserDao userDAO = (UserDao) ctx.getBean("userDAO");
+        UserService userService = (UserService) ctx.getBean("userService");
+        System.out.println("userService = " + userService);
+        System.out.println("userDAO = " + userDAO);
+    }
+
+    /**
+     * 用于测试:多配置Bean的整合 @Import
+     */
+    @Test
+    public void test10() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhi.config.AppConfig1.class);
+        UserDao userDAO = (UserDao) ctx.getBean("userDAO");
+        UserService userService = (UserService) ctx.getBean("userService");
+        System.out.println("userService = " + userService);
+        System.out.println("userDAO = " + userDAO);
+    }
+
 }

@@ -1,7 +1,10 @@
 import com.baizhi.*;
 import com.baizhi.bean.Customer;
 import com.baizhi.bean.User;
+import com.baizhi.four.Account;
+import com.baizhi.four.AppConfig10;
 import com.baizhi.injection.UserDao;
+import com.baizhi.injection.UserDaoImpl;
 import com.baizhi.injection.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -126,6 +129,53 @@ public class TestAnnotation {
         UserService userService = (UserService) ctx.getBean("userService");
         System.out.println("userService = " + userService);
         System.out.println("userDAO = " + userDAO);
+    }
+
+    /**
+     * 用于测试:@Component与配置Bean的整合
+     */
+    @Test
+    public void test11() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhi.config.AppConfig3.class);
+        UserService userService = (UserService) ctx.getBean("userService");
+//        UserDao userDAOImpl = (UserDao) ctx.getBean("userDaoImpl");
+//        System.out.println("userDAOImpl = " + userDAOImpl);
+//        System.out.println("userService = " + userService);
+        userService.register();
+    }
+
+    /**
+     * 用于测试:@Component与配置Bean的整合
+     */
+    @Test
+    public void test12() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(com.baizhi.config.AppConfig4.class);
+        UserService userService = (UserService) ctx.getBean("userService");
+//        UserDao userDAOImpl = (UserDao) ctx.getBean("userDAO");
+//        System.out.println("userDAOImpl = " + userDAOImpl);
+//        System.out.println("userService = " + userService);
+        userService.register();
+    }
+
+    /**
+     * 用于测试:@Bean底层实现原理
+     */
+    @Test
+    public void test13() {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        User u = (User) ctx.getBean("u");
+    }
+
+    /**
+     * 用于测试:四维一体开发
+     */
+    @Test
+    public void test14() {
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig10.class);
+        Account account = (Account) ctx.getBean("account");
+        System.out.println("account.getName() = " + account.getName());
+        System.out.println("account.getId() = " + account.getId());
     }
 
 }

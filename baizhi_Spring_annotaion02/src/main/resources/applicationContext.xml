@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="customer" class="com.baizhi.bean.Customer">
-        <property name="id" value="2"/>
-        <property name="name" value="suns"/>
-    </bean>
+<!--    <bean id="customer" class="com.baizhi.bean.Customer">-->
+<!--        <property name="id" value="2"/>-->
+<!--        <property name="name" value="suns"/>-->
+<!--    </bean>-->
 
-    <bean id="userDAO" class="com.baizhi.injection.UserServiceImplNew"/>
+<!--    <bean id="userDAO" class="com.baizhi.injection.UserDaoImplNew"/>-->
+
+    <bean id="useDAO" class="com.baizhi.injection.UserDaoImpl"/>
+
+<!--    <context:component-scan base-package="com.baizhi.four"/>-->
+
+<!--    <bean id="account" class="com.baizhi.four.Account"/>-->
+
+    <!--基于schema-->
+<!--    <context:property-placeholder location="classpath:four.properties"/>-->
+
+    <!--基于原始bean标签-->
+<!--    <bean id="propertyholder" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
+<!--        <property name="location" value="classpath:four.properties"/>-->
+<!--    </bean>-->
 </beans>
